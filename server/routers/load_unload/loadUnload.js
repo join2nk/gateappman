@@ -1,12 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-const kantaController = require('../../controllers/kantaController')
-router.get('/',(req,res)=>{
-  console.log('load unload route')
-  res.send(
-    'load unload route'
-  )
-})
+const load_unloadController = require('../../controllers/load_unloadController')
 
+router.get('/',load_unloadController.getloadUnloadHome)
 module.exports = router
