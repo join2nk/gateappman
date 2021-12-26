@@ -2,18 +2,16 @@
 const GateLog = require('../models/gatelogs')
 
 
-const getMain = (req, res) => {
+const getMain = async(req, res) => {
   //get label detaisl and send the details in the ejs template
-
   res.render('pages/gateman')
 }
-const postIn = (req, res) => {
 
-}
+const postIn = (req, res) => {}
 
-const postOut = (req, res) => {
+const postOut = (req, res) => {}
 
-}
+
 module.exports = {
   getMain,
   postIn,
