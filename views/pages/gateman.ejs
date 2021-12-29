@@ -3,7 +3,8 @@ let manifestFileLink = '/manifest/gateman.json'
 let title = 'GATEMAN'
 let data = gatedata
 
-let trucks = ['list','of','trucks','more','tiltes','for','test']
+let trucks = [{truckno:'cg04jb2834',name:'kaliasdfam'},{truckno:'cg04jb2834',name:'kalim'},{truckno:'cg04jb2834',name:'kalim'}]
+let trucksincampus = [{truckno:'cg04jb2834',name:'kaliasdfam'},{truckno:'cg04jb2834',name:'kalim'},{truckno:'cg04jb2834',name:'kalim'}]
 let items =['list','of','items']
 let units =['list','of','units']
 let partyLedgers =['list','of','parties']
@@ -34,9 +35,10 @@ let hemal=['list','of','hemal','group']
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
 
-      <a class="navbar-brand h1" href="#">GATEMAN</a>
+      <a class="navbar-brand h1" href="/">GATEMAN</a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -47,18 +49,18 @@ let hemal=['list','of','hemal','group']
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#">Logout</a>
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Admin</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Admin</a>
+            <a class="nav-link active" href="#">Logout</a>
           </li>
         </ul>
 
         <form class="d-flex">
-          <select class="w-25 me-2 border-1 border-secondary rounded-2" name="" id="">
+          <select class="w-50 me-2 border-1 border-secondary rounded-2" name="" id="">
             <option value="GP">GP NO</option>
-            <option value="GP">asdfasdfasdfasdasd</option>
-            <option value="GP">GP NO</option>
+            <option value="GP">Party</option>
+            <option value="GP">Broker</option>
             <option value="GP">GP NO</option>
             <option value="GP">GP NO</option>
           </select>
@@ -71,42 +73,108 @@ let hemal=['list','of','hemal','group']
   </nav>
 
 
-<center class="mt-5">
-  <form id="inform" action="/gateman/truckin" method="post" class="card m-2 p-2 d-none" style="width: 80%;text-align: left;"
-    autocomplete="off">
-    <h2>IN</h2>
-    <div class="d-inline">
-      truck number <div class='informbtn py-0 btn btn-primary m-1 float-end'>select</div> <br>
+  <center class="mt-5">
+
+    <form id="inform" action="/gateman/truckin" method="post" class="card m-2 p-2 d-none"
+      style="width: 80%;text-align: left;" autocomplete="off">
+      <h2>IN</h2>
+      <div class="d-inline">
+        truck number * <div class='informbtn py-0 btn btn-primary m-1 float-end'>select</div> <br>
+      </div>
+      <input type="text" name="truckNo" required><br>
+      <input id="truckNo"></input><br>
+      <textarea name="narration" id="" cols="30" rows="5"></textarea><br>
+      <input type="submit" value="IN">
+    </form>
+
+    <form id="outform" action="/gateman/truckin" method="post" class="card m-2 p-2 d-none"
+      style="width: 80%;text-align: left;" autocomplete="off">
+      <h2>OUT</h2>
+      <div class="d-inline">
+        truck number *<div class='outformbtn py-0 btn btn-primary m-1 float-end'>select</div> <br>
+      </div>
+      <input type="text" name="truckNo" required><br>
+      <input id="truckNo"></input><br>
+      Narration: <br>
+      <textarea name="narration" id="" cols="30" rows="5"></textarea><br>
+      <input type="submit" value="OUT">
+    </form>
+
+
+    <div class="trucknosearchdiv card m-2 p-2 w-80 bg-secondary bg-opacity-10 d-none">
+      <h3>Saved Truck </h3>
+      <hr>
+
+      <input class="trucknosearchinput input-group-text mb-2" type="text" name="" id="" placeholder="Search">
+      <table class="table table-light shadow">
+        <thead>
+          <tr class="thead">
+            <td>
+              NAME
+            </td>
+            <td>
+              TRUCK NO
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <% trucks.forEach(truck => { %>
+          <tr class="<%= truck.truckno %> ">
+            <td>
+              <%= truck.name %>
+            </td>
+            <td>
+              <%= truck.truckno %>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
     </div>
-    <input type="text" name="truckNo"><br>
-    <input id="truckNo"></input><br>
-    <textarea name="narration" id="" cols="30" rows="5"></textarea><br>
 
-    <input type="submit" value="IN">
-  </form>
-  
-  <form id="outform" action="/gateman/truckin" method="post" class="card m-2 p-2 d-none" style="width: 80%;text-align: left;"
-    autocomplete="off">
-    <h2>OUT</h2>
-    <div class="d-inline">
-      truck number <div class='informbtn py-0 btn btn-primary m-1 float-end'>select</div> <br>
+    <div class="truckincampusdiv card border-warning m-2 p-2 w-80 bg-secondary bg-opacity-10 d-none">
+      <h3> Truck in campus</h3>
+      <hr>
+      <input class="truckincampusinput input-group-text mb-2" type="text" name="" id="" placeholder="Search">
+      <table class="table table-light shadow incampus">
+        <thead>
+          <tr class="thead">
+            <td>
+              NAME
+            </td>
+            <td>
+              TRUCK NO
+            </td>
+          </tr>
+        </thead>
+        <tbody>
+          <% trucksincampus.forEach(truck => { %>
+          <tr class="<%= truck.truckno %> ">
+            <td>
+              <%= truck.name %>
+            </td>
+            <td>
+              <%= truck.truckno %>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
     </div>
-    <input type="text" name="truckNo"><br>
-    <input id="truckNo"></input><br>
-    Narration: <br>
-    <textarea name="narration" id="" cols="30" rows="5"></textarea><br>
 
-    <input type="submit" value="IN">
-  </form>
 
-  <div class="inoutbtn card m-2 p-2" style="width: 50%;">
-    <h3> Truck Gate</h3>
-    <hr>
-    <div class='inbtn py-0 btn btn-success py-3 m-5 mt-3  fw-bold'>IN</div>
-    <div class='outbtn py-0 btn btn-warning py-3 m-5 fw-bold'>OUT</div>
-  </div>
 
-</center>
+
+
+
+    <div class="inoutbtn card m-2 p-2" style="width: 80%;">
+      <h3> Truck Gate</h3>
+      <hr>
+      <div class='inbtn py-0 btn btn-success py-3 m-5 mt-3  fw-bold'>IN</div>
+      <div class='outbtn py-0 btn btn-warning py-3 m-5 fw-bold'>OUT</div>
+    </div>
+
+  </center>
 
 
 
