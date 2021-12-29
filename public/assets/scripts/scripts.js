@@ -10,19 +10,25 @@
   inbtn.addEventListener('click', event => {
     inform.classList.remove('d-none')
     inoutbtn.classList.add('d-none')
+    document.body.classList.add('bg-success')
+    document.body.classList.add('bg-opacity-25')
   })
 
   outbtn.addEventListener('click', event => {
     outform.classList.remove('d-none')
     inoutbtn.classList.add('d-none')
+    document.body.classList.add('bg-warning')
+    document.body.classList.add('bg-opacity-25')
   })
   /////////////////only for devlopment /////////////////
+  //or add hrx or fetch api
   inform.addEventListener('submit',(event)=>{
     event.preventDefault()
     console.log(event.target)
     // only for 
     inform.classList.add('d-none')
     inoutbtn.classList.remove('d-none')
+    document.body.classList.remove('bg-success')
 
   })
   outform.addEventListener('submit',(event)=>{
@@ -31,6 +37,7 @@
     // only for 
     outform.classList.add('d-none')
     inoutbtn.classList.remove('d-none')
+    document.body.classList.remove('bg-warning')
 
   })
 ///////////////////// end ///post anywat to redirect////////////////////
