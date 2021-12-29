@@ -1,14 +1,33 @@
-const ListModel = require("../models/lists")
-const TruckModel = require("../models/truckno")
-const GateLogModel = require("../models/gatelogs")
+const Lists = require("../models/lists")
+const Turck = require("../models/truck")
+const Gatelog = require("../models/gatelog")
 
 
-const getMain = async(req, res) => {
-  //get label detaisl and send the details in the ejs template
-  res.render('pages/gateman')
+const getMain = async (req, res) => {
+
+  let gatedata = await Gatelog.find()
+
+  res.render('pages/gateman', {
+    gatedata
+  })
 }
 
-const postIn = (req, res) => {}
+const postIn = (req, res) => {
+  let {
+    truckNo,
+    narration,
+    item = 'undifinded',
+    quantity = ''
+  } = req.body
+ 
+  console.log(truckNo)
+ 
+
+  let truckin = new Gatelog({truckNo,narration,item,quantity})
+  truckin.save(console.log('saved'))
+
+}
+
 
 const postOut = (req, res) => {}
 

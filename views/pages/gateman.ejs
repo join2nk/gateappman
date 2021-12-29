@@ -1,6 +1,14 @@
 <% 
 let manifestFileLink = '/manifest/gateman.json'
 let title = 'GATEMAN'
+let data = gatedata
+
+let trucks = ['list','of','trucks','more','tiltes','for','test']
+let items =['list','of','items']
+let units =['list','of','units']
+let partyLedgers =['list','of','parties']
+let hemal=['list','of','hemal','group']
+
 %>
 
 <!doctype html>
@@ -22,32 +30,64 @@ let title = 'GATEMAN'
 </head>
 
 <body>
-  <div class="nav bg-dark text-light d-flex justify-content-between">
-    <span class="navbar-brand text ms-2 ">
-      <%= title %> </span>
-    <span class="m-2 ">
-      <input class="rounded-pill bg-secondary border-0 bg-gradient shadow " type="button" value=" ••• ">
-    </span>
-  </div>
+  <!-- nav va -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand h1" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
 
 
 
-  <div class="text-center">
-    <div class="card rounded-0 bg-secondary bg-opacity-50 mt-5 ">hello</div>
-  </div>
+  <form id="inform" action="/gateman/truckin" method="post" class="card m-2 p-2 d-none" style="width: 40%;"
+    autocomplete="off">
+    <h2>IN</h2>
+    <div class="d-inline">
+      truck number <div class='informbtn py-0 btn btn-primary m-1'>select</div> <br>
+    </div>
+    <input type="text" name="truckNo"><br>
+    <input id="truckNo"></input><br>
+    <textarea name="narration" id="" cols="30" rows="5"></textarea><br>
 
-  <div class="text-center">
-    <div class="card rounded-0 bg-secondary bg-opacity-50 mt-5">hello</div>
-  </div>
+    <input type="submit" value="IN">
+  </form>
+  
+  <form id="outform" action="/gateman/truckin" method="post" class="card m-2 p-2 d-none" style="width: 40%;"
+    autocomplete="off">
+    <h2>OUT</h2>
+    <div class="d-inline">
+      truck number <div class='informbtn py-0 btn btn-primary m-1'>select</div> <br>
+    </div>
+    <input type="text" name="truckNo"><br>
+    <input id="truckNo"></input><br>
+    <textarea name="narration" id="" cols="30" rows="5"></textarea><br>
 
+    <input type="submit" value="IN">
+  </form>
 
-  <div class="">
-    button 1
-  </div>
-
-
-  <div class="">
-    button 2
+  <div class="inoutbtn card m-2 p-2" style="width: 40%;">
+    <div class='inbtn py-0 btn btn-primary py-3 my-3'>IN</div>
+    <div class='outbtn py-0 btn btn-primary py-3 my-3'>OUT</div>
   </div>
 
 
@@ -64,6 +104,7 @@ let title = 'GATEMAN'
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
   </script>
+  <script src="assets/scripts/scripts.js"></script>
 </body>
 
 </html>
