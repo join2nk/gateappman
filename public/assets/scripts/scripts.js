@@ -88,7 +88,7 @@
 }
 
 
-//search inplimentation
+//search inplimentation TODO:
 {
   //-------------search inplimentation TODO:----
   document.querySelector('.trucknosearchinput').addEventListener('keyup', (event) => {
@@ -111,3 +111,5 @@
   })
   //------------------------------------------------
 }
+
+//functional programming ..//doing functional

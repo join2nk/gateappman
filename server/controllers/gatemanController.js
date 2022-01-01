@@ -7,7 +7,7 @@ const getMain = async (req, res) => {
 
   let gatedata = await Gatelog.find()
 
-  res.render('pages/gateman', {
+  res.render('pages/gateman/home', {
     gatedata
   })
 }
